@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeBalances, totalOf } from "./balances";
-import { demoExpenses, demoMembers, demoSettlements } from "./demo";
+import { goaTripExpenses, goaTripMembers, goaTripSettlements } from "./sample";
 import { splitEqually } from "./splits";
 import type { Expense } from "./types";
 
@@ -33,7 +33,7 @@ describe("computeBalances", () => {
   });
 
   it("always adds up to 0", () => {
-    const balances = computeBalances(demoExpenses, demoSettlements, demoMembers.map((m) => m.id));
+    const balances = computeBalances(goaTripExpenses, goaTripSettlements, goaTripMembers.map((m) => m.id));
     expect(totalOf(balances)).toBe(0);
   });
 

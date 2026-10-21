@@ -15,12 +15,13 @@
   --color-owed-soft: var(--splitly-owedSoft);
   --color-owes: var(--splitly-owes);
   --color-owes-soft: var(--splitly-owesSoft);
-  --color-marigold: var(--splitly-marigold);
-  --color-marigold-soft: var(--splitly-marigoldSoft);
-  --color-on-marigold: var(--splitly-onMarigold);
+  --color-primary: var(--splitly-primary);
+  --color-primary-soft: var(--splitly-primarySoft);
+  --color-on-primary: var(--splitly-onPrimary);
   --color-panel: var(--splitly-panel);
   --color-panel-raised: var(--splitly-panelRaised);
   --color-on-panel: var(--splitly-onPanel);
+  --color-highlight: var(--splitly-highlight);
   --font-sans: var(--font-geist-sans);
   --font-display: "Bricolage Grotesque Variable", var(--font-geist-sans);
 }
@@ -42,7 +43,7 @@ body {
   animation: grow-from-zero 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Placeholder blocks shown while saved data loads. */
+/* Loading shapes shown while saved data is read. */
 @keyframes shimmer {
   50% {
     opacity: 0.55;

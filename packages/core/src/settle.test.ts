@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeBalances } from "./balances";
-import { demoExpenses, demoSettlements } from "./demo";
+import { goaTripExpenses, goaTripSettlements } from "./sample";
 import { simplifyDebts } from "./settle";
 import type { Balances, Transfer } from "./types";
 
@@ -40,8 +40,8 @@ describe("simplifyDebts", () => {
     expect(simplifyDebts(balances)).toEqual([{ from: "a", to: "c", amount: 1000 }]);
   });
 
-  it("settles the demo trip", () => {
-    const balances = computeBalances(demoExpenses, demoSettlements);
+  it("settles the Goa trip", () => {
+    const balances = computeBalances(goaTripExpenses, goaTripSettlements);
     const transfers = simplifyDebts(balances);
     expect(Object.values(applyTransfers(balances, transfers)).every((v) => v === 0)).toBe(true);
   });

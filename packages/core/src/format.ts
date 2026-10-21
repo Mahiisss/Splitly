@@ -19,7 +19,6 @@ const MONTHS = [
  * server and every browser put an expense on the same day. Without a fixed
  * timezone, a server running on UTC (like Vercel) and a browser in India
  * disagree about late-evening expenses, and React reports a hydration error.
- * Week 2 can store a timezone per group instead.
  */
 export const GROUP_UTC_OFFSET_MINUTES = 330;
 

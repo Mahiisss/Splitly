@@ -54,6 +54,6 @@ const makeStyles = (c: Palette) =>
       elevation: 6,
     },
     text: { color: c.canvas, fontSize: fontSizes.small + 1, fontWeight: "500", flexShrink: 1, paddingRight: spacing.sm },
-    undo: { backgroundColor: c.marigold, borderRadius: radii.pill, paddingVertical: spacing.sm, paddingHorizontal: spacing.lg - 2 },
-    undoText: { color: c.onMarigold, fontWeight: "700", fontSize: fontSizes.small + 1 },
+    undo: { backgroundColor: c.primary, borderRadius: radii.pill, paddingVertical: spacing.sm, paddingHorizontal: spacing.lg - 2 },
+    undoText: { color: c.onPrimary, fontWeight: "700", fontSize: fontSizes.small + 1 },
   });

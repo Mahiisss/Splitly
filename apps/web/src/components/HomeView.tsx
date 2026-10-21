@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
-  demoCurrentUserId,
+  currentUserId,
   formatMoney,
   sampleAppState,
   yourBalance,
@@ -31,7 +31,7 @@ export function HomeView() {
 
   if (!loaded) return <Skeleton />;
 
-  const balances = app.groups.map((g) => yourBalance(g, demoCurrentUserId));
+  const balances = app.groups.map((g) => yourBalance(g, currentUserId));
   const total = balances.reduce((sum, b) => sum + b, 0);
 
   function create(group: Group) {
@@ -85,7 +85,7 @@ export function HomeView() {
         <button
           type="button"
           onClick={resetSampleData}
-          className="font-medium text-ink underline underline-offset-4 hover:decoration-marigold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          className="font-medium text-ink underline underline-offset-4 hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           Reset to sample data
         </button>

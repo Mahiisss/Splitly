@@ -3,7 +3,7 @@ import { formatMoney, type Member, type Transfer, type UserId } from "@splitly/c
 import { Avatar } from "./Avatar";
 
 const panelButton =
-  "inline-flex h-8 items-center gap-1.5 rounded-full border border-on-panel/25 px-3 text-xs font-semibold text-on-panel hover:border-marigold hover:text-marigold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marigold";
+  "inline-flex h-8 items-center gap-1.5 rounded-full border border-on-panel/25 px-3 text-xs font-semibold text-on-panel hover:border-on-panel/70 hover:bg-on-panel/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-panel";
 
 export function SettleUp({
   transfers,
@@ -38,7 +38,7 @@ export function SettleUp({
           </button>
         )}
       </div>
-      <p className="mt-1 text-sm text-on-panel/70">
+      <p className="mt-1 text-sm text-on-panel/90">
         {transfers.length === 0
           ? "Everyone is square. Nothing to pay."
           : `${transfers.length} payment${transfers.length === 1 ? "" : "s"} clear every balance in the group.`}
@@ -53,7 +53,7 @@ export function SettleUp({
           return (
             <li
               key={`${t.from}-${t.to}`}
-              className={`rounded-xl bg-panel-raised p-4 ${involvesYou ? "ring-1 ring-marigold/70" : ""}`}
+              className={`rounded-xl bg-panel-raised p-4 ${involvesYou ? "ring-1 ring-highlight" : ""}`}
             >
               <div className="flex items-center gap-2">
                 {from && <Avatar member={from} members={members} size="sm" />}

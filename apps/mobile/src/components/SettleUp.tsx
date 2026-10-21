@@ -59,7 +59,7 @@ export function SettleUp({
                 accessibilityRole="button"
                 accessibilityLabel={`Mark as paid: ${sentence} ${formatMoney(t.amount)}`}
                 onPress={() => onMarkPaid(t)}
-                style={({ pressed }) => [styles.pill, pressed && { borderColor: c.marigold }]}
+                style={({ pressed }) => [styles.pill, pressed && { borderColor: c.onPanel }]}
               >
                 <Ionicons name="checkmark" size={14} color={c.onPanel} />
                 <Text style={styles.pillText}>Mark as paid</Text>
@@ -74,7 +74,7 @@ export function SettleUp({
 
 const makeStyles = (c: Palette) =>
   StyleSheet.create({
-    subtitle: { color: c.onPanel, opacity: 0.7, fontSize: fontSizes.small, marginTop: spacing.xs, marginBottom: spacing.sm },
+    subtitle: { color: c.onPanel, opacity: 0.9, fontSize: fontSizes.small, marginTop: spacing.xs, marginBottom: spacing.sm },
     item: {
       backgroundColor: c.panelRaised,
       borderRadius: radii.md,
@@ -83,7 +83,7 @@ const makeStyles = (c: Palette) =>
       borderWidth: 1,
       borderColor: c.panelRaised,
     },
-    yours: { borderColor: c.marigold },
+    yours: { borderColor: c.highlight },
     people: { flexDirection: "row", alignItems: "center", gap: spacing.xs + 2 },
     arrow: { opacity: 0.5 },
     who: { color: c.onPanel, opacity: 0.85, fontSize: fontSizes.small + 1, marginLeft: spacing.xs },
@@ -96,7 +96,7 @@ const makeStyles = (c: Palette) =>
       paddingHorizontal: spacing.md,
       borderRadius: radii.pill,
       borderWidth: 1,
-      borderColor: "rgba(238,241,237,0.3)",
+      borderColor: `${c.onPanel}4D`, // 30% opacity
     },
     pillText: { color: c.onPanel, fontSize: fontSizes.caption, fontWeight: "700" },
     amount: {

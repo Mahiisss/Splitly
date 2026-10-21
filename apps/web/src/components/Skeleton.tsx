@@ -1,4 +1,4 @@
-/** Grey placeholder shapes shown for a moment while saved data loads. */
+/** Grey loading shapes shown for a moment while saved data is read. */
 export function Skeleton() {
   return (
     <div aria-busy="true" aria-label="Loading" className="pt-6 pb-10 sm:pt-10">

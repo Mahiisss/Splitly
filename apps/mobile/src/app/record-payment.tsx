@@ -3,7 +3,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { buildSettlement, demoCurrentUserId, formatMoney, type Group, type PaymentDraft } from "@splitly/core";
+import { buildSettlement, currentUserId, formatMoney, type Group, type PaymentDraft } from "@splitly/core";
 import { fontSizes, spacing, type Palette } from "@splitly/theme";
 import { Avatar } from "@/components/Avatar";
 import { Chip, Chips, ErrorText, Field, FormFooter, PrimaryButton, Section } from "@/components/Form";
@@ -31,7 +31,6 @@ function PaymentForm({ group, params }: { group: Group; params: Params }) {
   const { dispatch, showToast } = useApp();
   const insets = useSafeAreaInsets();
   const styles = useStyles(makeStyles);
-  const currentUserId = demoCurrentUserId;
   const members = group.members;
   const memberIds = members.map((m) => m.id);
   const fallbackFrom = members.find((m) => m.id !== currentUserId)?.id ?? currentUserId;

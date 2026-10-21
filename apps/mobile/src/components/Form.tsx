@@ -125,11 +125,11 @@ const makeStyles = (c: Palette) =>
     primary: {
       height: 50,
       borderRadius: radii.pill,
-      backgroundColor: c.marigold,
+      backgroundColor: c.primary,
       alignItems: "center",
       justifyContent: "center",
     },
-    primaryText: { fontSize: fontSizes.body, fontWeight: "700", color: c.onMarigold },
+    primaryText: { fontSize: fontSizes.body, fontWeight: "700", color: c.onPrimary },
     footer: {
       paddingHorizontal: spacing.lg,
       paddingTop: spacing.md,

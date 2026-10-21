@@ -201,7 +201,7 @@ function ExpenseForm({
                   checked={draft.method === m.value}
                   onChange={() => update({ method: m.value, values: {} })}
                 />
-                <span className="inline-flex h-9 cursor-pointer items-center rounded-full px-3.5 text-sm font-medium text-muted peer-checked:bg-surface peer-checked:text-ink peer-checked:shadow-sm peer-focus-visible:outline-2 peer-focus-visible:outline-marigold">
+                <span className="inline-flex h-9 cursor-pointer items-center rounded-full px-3.5 text-sm font-medium text-muted peer-checked:bg-surface peer-checked:text-ink peer-checked:shadow-sm peer-focus-visible:outline-2 peer-focus-visible:outline-primary">
                   {m.label}
                 </span>
               </label>

@@ -5,7 +5,7 @@ import {
   APP_STORAGE_KEY,
   LEGACY_GROUP_STORAGE_KEY,
   appReducer,
-  demoGroup,
+  goaTripId,
   loadAppState,
   sampleAppState,
   serializeAppState,
@@ -46,7 +46,7 @@ const AppStoreContext = createContext<AppStoreValue | null>(null);
  *
  * Nothing is read from storage during the first render, because the server
  * can't see this browser's storage and the HTML would differ (a React
- * hydration error). Pages show a placeholder until `loaded` is true.
+ * hydration error). Pages show a loading skeleton until `loaded` is true.
  */
 export function AppStoreProvider({ children }: { children: ReactNode }) {
   const [store, dispatch] = useReducer(storeReducer, { app: sampleAppState, loaded: false });
@@ -56,7 +56,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
     const state = loadAppState(
       { app: readStorage(APP_STORAGE_KEY), legacyGroup: readStorage(LEGACY_GROUP_STORAGE_KEY) },
       sampleAppState,
-      demoGroup.id,
+      goaTripId,
     );
     dispatch({ type: "hydrate", state });
   }, []);
@@ -100,7 +100,7 @@ function ToastRegion({ toast, onDismiss }: { toast: Toast | null; onDismiss: () 
                 toast.onUndo?.();
                 onDismiss();
               }}
-              className="rounded-full bg-marigold px-3.5 py-1.5 font-semibold text-on-marigold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marigold"
+              className="rounded-full bg-primary px-3.5 py-1.5 font-semibold text-on-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               Undo
             </button>

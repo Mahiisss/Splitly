@@ -37,7 +37,7 @@ export function ActivityFeed({
           <button
             type="button"
             onClick={onAddExpense}
-            className="mt-4 text-sm font-semibold text-ink underline underline-offset-4 hover:decoration-marigold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            className="mt-4 text-sm font-semibold text-ink underline underline-offset-4 hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
           >
             Add an expense
           </button>

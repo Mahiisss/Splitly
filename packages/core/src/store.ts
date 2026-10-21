@@ -105,7 +105,7 @@ export const STORAGE_VERSION = 2;
 /** Where the whole app is saved (version 2 and later). */
 export const APP_STORAGE_KEY = "splitly:app";
 
-/** Version 1 saved a single demo group under this key. */
+/** The first version of the app saved a single group under this key. */
 export const LEGACY_GROUP_STORAGE_KEY = "splitly:group:goa-trip";
 
 export function serializeAppState(state: AppState): string {

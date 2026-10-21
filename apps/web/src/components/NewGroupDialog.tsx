@@ -2,7 +2,7 @@
 
 import { Plus, X } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { buildGroup, demoCurrentUser, type Group, type GroupDraft } from "@splitly/core";
+import { buildGroup, currentUser, type Group, type GroupDraft } from "@splitly/core";
 import { avatarColors, initials } from "@splitly/theme";
 import { Dialog } from "./Dialog";
 import { button, field, label } from "./ui";
@@ -26,7 +26,7 @@ export function NewGroupDialog({
 function GroupForm({ onCancel, onCreate }: { onCancel: () => void; onCreate: (group: Group) => void }) {
   const [draft, setDraft] = useState<GroupDraft>({ name: "", memberNames: ["", ""] });
   const [submitted, setSubmitted] = useState(false);
-  const you = demoCurrentUser;
+  const you = currentUser;
   const meta = () => ({ id: crypto.randomUUID(), createdAt: new Date().toISOString(), newId: () => crypto.randomUUID() });
   const check = buildGroup(draft, you, { id: "", createdAt: "", newId: () => "" });
   const errors = submitted && !check.ok ? check.errors : {};

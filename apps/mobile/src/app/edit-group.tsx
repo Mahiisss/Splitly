@@ -4,7 +4,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { buildGroupEdit, demoCurrentUserId, memberInUse, type Group, type GroupEditDraft } from "@splitly/core";
+import { buildGroupEdit, currentUserId, memberInUse, type Group, type GroupEditDraft } from "@splitly/core";
 import { avatarColors, fontSizes, radii, spacing, type Palette } from "@splitly/theme";
 import { Avatar } from "@/components/Avatar";
 import { ErrorText, Field, FormFooter, PrimaryButton, Section } from "@/components/Form";
@@ -31,7 +31,6 @@ function EditGroupForm({ group }: { group: Group }) {
   const c = usePalette();
   const styles = useStyles(makeStyles);
   const insets = useSafeAreaInsets();
-  const currentUserId = demoCurrentUserId;
   const [draft, setDraft] = useState<GroupEditDraft>({
     name: group.name,
     keep: group.members.map((m) => m.id),

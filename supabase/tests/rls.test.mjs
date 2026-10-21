@@ -1,5 +1,5 @@
 // Security tests for the database schema. Runs the real migration inside
-// PGlite (Postgres compiled to WebAssembly) with a tiny fake of Supabase auth,
+// PGlite (Postgres compiled to WebAssembly) with a minimal copy of Supabase auth,
 // then checks what each user is and is not allowed to see and do.
 // Run with: npm test --workspace=@splitly/db
 import { PGlite } from "@electric-sql/pglite";

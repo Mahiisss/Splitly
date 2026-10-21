@@ -1,11 +1,12 @@
 name: Keep Supabase awake
 
 # Supabase pauses free projects after 1 week without activity.
-# This makes one tiny read every 3 days so the live demo never goes to sleep.
+# This makes one tiny read every 3 days so the database never goes to sleep.
 #
 # Needs two repository secrets (Settings -> Secrets and variables -> Actions):
 #   SUPABASE_URL       e.g. https://abcd.supabase.co
 #   SUPABASE_ANON_KEY  the anon / publishable key (never the service_role key)
+# Without them the job skips itself and still passes.
 
 on:
   schedule:
@@ -22,8 +23,8 @@ jobs:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
           if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
-            echo "Add the SUPABASE_URL and SUPABASE_ANON_KEY repository secrets first."
-            exit 1
+            echo "::notice::Skipped: no Supabase project is linked to this repository."
+            exit 0
           fi
           # Row Level Security returns no rows to anonymous visitors, but the
           # request still reaches Postgres, which is what counts as activity.

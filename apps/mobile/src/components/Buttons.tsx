@@ -23,7 +23,7 @@ export function PillButton({
       onPress={onPress}
       style={({ pressed }) => [styles.button, primary ? styles.primary : styles.secondary, pressed && styles.pressed]}
     >
-      {icon && <Ionicons name={icon} size={18} color={primary ? c.onMarigold : c.ink} />}
+      {icon && <Ionicons name={icon} size={18} color={primary ? c.onPrimary : c.ink} />}
       <Text style={[styles.text, primary && styles.primaryText]}>{label}</Text>
     </Pressable>
   );
@@ -50,10 +50,10 @@ const makeStyles = (c: Palette) =>
       gap: spacing.xs + 2,
     },
     secondary: { backgroundColor: c.surface, borderWidth: 1, borderColor: c.line },
-    primary: { backgroundColor: c.marigold },
+    primary: { backgroundColor: c.primary },
     pressed: { opacity: 0.85 },
     text: { fontSize: fontSizes.small + 1, fontWeight: "700", color: c.ink },
-    primaryText: { color: c.onMarigold },
+    primaryText: { color: c.onPrimary },
     link: { color: c.ink, fontSize: fontSizes.small, fontWeight: "600", textDecorationLine: "underline" },
     danger: { color: c.owes },
   });

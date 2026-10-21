@@ -2,7 +2,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { demoCurrentUserId, formatMoney, sampleAppState, yourBalance, type Group } from "@splitly/core";
+import { currentUserId, formatMoney, sampleAppState, yourBalance, type Group } from "@splitly/core";
 import { fontSizes, radii, spacing, type Palette } from "@splitly/theme";
 import { AvatarStack } from "@/components/Avatar";
 import { LinkButton, PillButton } from "@/components/Buttons";
@@ -31,7 +31,7 @@ export default function HomeScreen() {
     );
   }
 
-  const balances = app.groups.map((g) => yourBalance(g, demoCurrentUserId));
+  const balances = app.groups.map((g) => yourBalance(g, currentUserId));
   const total = balances.reduce((sum, b) => sum + b, 0);
 
   function resetSampleData() {

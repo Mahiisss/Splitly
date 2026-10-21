@@ -27,7 +27,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/demo.gif" alt="Adding a ₹3,000 expense to the Goa Trip group, watching the balances update, then marking Aarav's payment as paid" />
+  <img src="docs/walkthrough.gif" alt="Adding a ₹3,000 expense to the Goa Trip group, watching the balances update, then marking Aarav's payment as paid" />
 </p>
 
 ## Highlights
@@ -122,7 +122,7 @@ splitly/
 ├── supabase/
 │   ├── migrations/   Postgres schema, Row Level Security, RPC functions
 │   └── tests/        Security tests that run the real schema in PGlite
-└── docs/             Screenshots and the demo
+└── docs/             Screenshots and the walkthrough GIF
 ```
 
 Both apps are thin UI layers. Anything that could disagree between web and mobile (rounding, validation, who owes whom, what "undo" restores) lives in `packages/core` and is tested once.

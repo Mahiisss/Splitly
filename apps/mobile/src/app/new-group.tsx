@@ -4,7 +4,7 @@ import { router } from "expo-router";
 import { useState } from "react";
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { buildGroup, demoCurrentUser, type GroupDraft } from "@splitly/core";
+import { buildGroup, currentUser, type GroupDraft } from "@splitly/core";
 import { avatarColors, fontSizes, radii, spacing, type Palette } from "@splitly/theme";
 import { Avatar } from "@/components/Avatar";
 import { ErrorText, Field, FormFooter, PrimaryButton, Section } from "@/components/Form";
@@ -18,7 +18,7 @@ export default function NewGroupScreen() {
   const c = usePalette();
   const styles = useStyles(makeStyles);
   const insets = useSafeAreaInsets();
-  const you = demoCurrentUser;
+  const you = currentUser;
   const [draft, setDraft] = useState<GroupDraft>({ name: "", memberNames: ["", ""] });
   const [submitted, setSubmitted] = useState(false);
   const check = buildGroup(draft, you, { id: "", createdAt: "", newId: () => "" });

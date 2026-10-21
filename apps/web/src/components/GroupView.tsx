@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import {
   amountToInput,
-  demoCurrentUserId,
+  currentUserId,
   formatMoney,
   joinNames,
   settleUpMessage,
@@ -53,7 +53,6 @@ async function shareText(text: string): Promise<"shared" | "copied" | "failed"> 
 export function GroupView({ group }: { group: Group }) {
   const { app, dispatch, showToast } = useAppStore();
   const router = useRouter();
-  const currentUserId = demoCurrentUserId;
   const members = group.members;
 
   const [expenseDialog, setExpenseDialog] = useState<{ editing: Expense | null } | null>(null);

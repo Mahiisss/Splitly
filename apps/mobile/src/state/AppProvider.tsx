@@ -4,7 +4,7 @@ import {
   APP_STORAGE_KEY,
   LEGACY_GROUP_STORAGE_KEY,
   appReducer,
-  demoGroup,
+  goaTripId,
   loadAppState,
   sampleAppState,
   serializeAppState,
@@ -52,7 +52,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     AsyncStorage.multiGet([APP_STORAGE_KEY, LEGACY_GROUP_STORAGE_KEY])
       .then(([[, app], [, legacyGroup]]) =>
-        dispatch({ type: "hydrate", state: loadAppState({ app, legacyGroup }, sampleAppState, demoGroup.id) }),
+        dispatch({ type: "hydrate", state: loadAppState({ app, legacyGroup }, sampleAppState, goaTripId) }),
       )
       .catch(() => dispatch({ type: "hydrate", state: sampleAppState })); // storage unavailable
   }, []);

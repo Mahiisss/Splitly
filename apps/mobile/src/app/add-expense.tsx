@@ -6,7 +6,7 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   buildExpense,
-  demoCurrentUserId,
+  currentUserId,
   draftFromExpense,
   EXPENSE_CATEGORIES,
   formatMoney,
@@ -48,7 +48,6 @@ function ExpenseForm({ group, expenseId }: { group: Group; expenseId?: string })
   const c = usePalette();
   const styles = useStyles(makeStyles);
   const insets = useSafeAreaInsets();
-  const currentUserId = demoCurrentUserId;
   const members = group.members;
   const memberIds = members.map((m) => m.id);
   const editing = group.expenses.find((e) => e.id === expenseId) ?? null;

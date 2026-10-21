@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { demoExpenses, demoSettlements, sampleAppState } from "./demo";
+import { goaTripExpenses, goaTripSettlements, sampleAppState } from "./sample";
 import {
   appReducer,
   groupReducer,
@@ -10,7 +10,7 @@ import {
 } from "./store";
 import type { AppState, Expense, Group, GroupState, Settlement } from "./types";
 
-const initial: GroupState = { expenses: demoExpenses, settlements: demoSettlements };
+const initial: GroupState = { expenses: goaTripExpenses, settlements: goaTripSettlements };
 const dinner: Expense = {
   id: "new-expense",
   description: "Dinner",
@@ -33,7 +33,7 @@ describe("groupReducer", () => {
     });
     expect(next.expenses).toHaveLength(initial.expenses.length + 1);
     expect(next.settlements).toHaveLength(initial.settlements.length + 1);
-    expect(initial.expenses).toHaveLength(demoExpenses.length);
+    expect(initial.expenses).toHaveLength(goaTripExpenses.length);
   });
 
   it("updates an expense in place", () => {

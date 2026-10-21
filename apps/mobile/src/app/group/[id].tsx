@@ -5,7 +5,7 @@ import { Pressable, ScrollView, Share, StyleSheet, Text, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   amountToInput,
-  demoCurrentUserId,
+  currentUserId,
   formatMoney,
   joinNames,
   settleUpMessage,
@@ -34,7 +34,6 @@ export default function GroupScreen() {
   const { app, dispatch, showToast } = useApp();
   const c = usePalette();
   const styles = useStyles(makeStyles);
-  const currentUserId = demoCurrentUserId;
 
   const summary = useMemo(
     () => (group ? summarizeGroup(group.members, group.expenses, group.settlements) : null),

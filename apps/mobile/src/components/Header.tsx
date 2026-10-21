@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { demoCurrentUser } from "@splitly/core";
+import { currentUser } from "@splitly/core";
 import { fontSizes, spacing, type Palette } from "@splitly/theme";
 import { useStyles } from "@/theme/usePalette";
 import { Avatar } from "./Avatar";
@@ -10,11 +10,12 @@ export function Header() {
   return (
     <View style={styles.topBar}>
       <View style={styles.logo}>
-        <View style={[styles.coin, styles.coinBack]} />
-        <View style={[styles.coin, styles.coinFront]} />
+        {/* A coin cut in two, the halves pulled apart: one bill, split. */}
+        <View style={[styles.half, styles.leftHalf]} />
+        <View style={[styles.half, styles.rightHalf]} />
         <Text style={styles.logoText}>Splitly</Text>
       </View>
-      <Avatar member={demoCurrentUser} members={[demoCurrentUser]} />
+      <Avatar member={currentUser} members={[currentUser]} />
     </View>
   );
 }
@@ -23,8 +24,14 @@ const makeStyles = (c: Palette) =>
   StyleSheet.create({
     topBar: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingVertical: spacing.md },
     logo: { flexDirection: "row", alignItems: "center" },
-    coin: { width: 18, height: 18, borderRadius: 9 },
-    coinBack: { backgroundColor: c.ink },
-    coinFront: { backgroundColor: c.marigold, marginLeft: -8, opacity: 0.92 },
+    half: { width: 9, height: 18 },
+    leftHalf: { backgroundColor: c.primary, borderTopLeftRadius: 9, borderBottomLeftRadius: 9, transform: [{ translateY: -1.5 }] },
+    rightHalf: {
+      backgroundColor: c.primary,
+      borderTopRightRadius: 9,
+      borderBottomRightRadius: 9,
+      marginLeft: 2,
+      transform: [{ translateY: 1.5 }],
+    },
     logoText: { fontSize: fontSizes.title - 2, fontWeight: "700", color: c.ink, marginLeft: spacing.sm, letterSpacing: -0.3 },
   });

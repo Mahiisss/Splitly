@@ -2,26 +2,27 @@ import { splitByShares, splitEqually, splitExact } from "./splits";
 import type { AppState, Expense, Group, Member, Settlement, UserId } from "./types";
 
 /**
- * Sample data so the web and mobile apps have something to show before the
- * database is connected. Both apps import this same file, which proves the
- * shared-package setup works.
+ * The groups a new install starts with: a weekend in Goa and a shared flat.
+ * Both apps load the same data, so they always show the same balances.
  */
-export const demoGroup = { id: "goa-trip", name: "Goa Trip", currency: "INR" };
 
-/** The app is shown from Mahi's point of view ("you"). Sign-in replaces this in week 2. */
-export const demoCurrentUser: Member = { id: "mahi", name: "Mahi" };
-export const demoCurrentUserId: UserId = demoCurrentUser.id;
+/** The person using the app. Everything is shown from their side ("you"). */
+export const currentUser: Member = { id: "mahi", name: "Mahi" };
+export const currentUserId: UserId = currentUser.id;
 
-export const demoMembers: Member[] = [
-  demoCurrentUser,
+/** The Goa Trip group's id, also used to find saves from the first app version. */
+export const goaTripId = "goa-trip";
+
+export const goaTripMembers: Member[] = [
+  currentUser,
   { id: "aarav", name: "Aarav" },
   { id: "priya", name: "Priya" },
   { id: "rohan", name: "Rohan" },
 ];
 
-const everyone = demoMembers.map((m) => m.id);
+const everyone = goaTripMembers.map((m) => m.id);
 
-export const demoExpenses: Expense[] = [
+export const goaTripExpenses: Expense[] = [
   {
     id: "e1",
     description: "Villa booking (2 nights)",
@@ -71,7 +72,7 @@ export const demoExpenses: Expense[] = [
   },
 ];
 
-export const demoSettlements: Settlement[] = [
+export const goaTripSettlements: Settlement[] = [
   { id: "s1", from: "rohan", to: "mahi", amount: 100_000, createdAt: "2026-10-03T08:00:00.000Z" },
 ];
 
@@ -79,7 +80,7 @@ export const demoSettlements: Settlement[] = [
 // A second sample group, so the home screen shows more than one.
 // ---------------------------------------------------------------------------
 
-const flatMembers: Member[] = [demoCurrentUser, { id: "kabir", name: "Kabir" }, { id: "isha", name: "Isha" }];
+const flatMembers: Member[] = [currentUser, { id: "kabir", name: "Kabir" }, { id: "isha", name: "Isha" }];
 const flatmates = flatMembers.map((m) => m.id);
 
 const flatGroup: Group = {
@@ -134,12 +135,12 @@ const flatGroup: Group = {
 };
 
 const goaGroup: Group = {
-  id: demoGroup.id,
-  name: demoGroup.name,
-  members: demoMembers,
+  id: goaTripId,
+  name: "Goa Trip",
+  members: goaTripMembers,
   createdAt: "2026-09-28T10:00:00.000Z",
-  expenses: demoExpenses,
-  settlements: demoSettlements,
+  expenses: goaTripExpenses,
+  settlements: goaTripSettlements,
 };
 
 /** What a new install starts with. */

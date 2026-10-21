@@ -20,48 +20,51 @@ export interface Palette {
   owedSoft: string;
   owes: string; // "owes" (negative balance)
   owesSoft: string;
-  marigold: string; // primary actions, "you" highlight
-  marigoldSoft: string;
-  onMarigold: string; // text on marigold buttons
+  primary: string; // brand red: main buttons and the logo
+  primarySoft: string;
+  onPrimary: string; // text on primary buttons
   panel: string; // the settle-up panel
   panelRaised: string; // rows inside the panel
   onPanel: string; // text on the panel
+  highlight: string; // brighter red that stays visible on the panel ("your" payments)
 }
 
 const light: Palette = {
-  canvas: "#EEF1ED",
+  canvas: "#F6F6F7",
   surface: "#FFFFFF",
-  ink: "#1A1C2E",
-  muted: "#5D6273",
-  line: "#DCE1DA",
+  ink: "#1C1C1E",
+  muted: "#5F6068",
+  line: "#E4E4E7",
   owed: "#0B8466",
   owedSoft: "#D5EEE5",
-  owes: "#C9324F",
-  owesSoft: "#F8DCE2",
-  marigold: "#F4B63F",
-  marigoldSoft: "#FCEFD2",
-  onMarigold: "#1A1C2E",
-  panel: "#1A1C2E",
-  panelRaised: "#2A2D45",
-  onPanel: "#EEF1ED",
+  owes: "#B91C2E",
+  owesSoft: "#FBE3E6",
+  primary: "#D7263D",
+  primarySoft: "#FCE4E7",
+  onPrimary: "#FFFFFF",
+  panel: "#1C1C1E",
+  panelRaised: "#2C2C31",
+  onPanel: "#FFFFFF",
+  highlight: "#F0475C",
 };
 
 const dark: Palette = {
-  canvas: "#11131D",
-  surface: "#1A1D2B",
-  ink: "#E9EBF2",
-  muted: "#9BA1B5",
-  line: "#2B2F42",
+  canvas: "#121214",
+  surface: "#1C1C1F",
+  ink: "#F2F2F3",
+  muted: "#A1A1AA",
+  line: "#2E2E33",
   owed: "#3DCB9C",
   owedSoft: "#12352C",
-  owes: "#FF7A93",
-  owesSoft: "#3F1D27",
-  marigold: "#F4B63F",
-  marigoldSoft: "#3A2E14",
-  onMarigold: "#1A1C2E",
-  panel: "#252940",
-  panelRaised: "#31364F",
-  onPanel: "#E9EBF2",
+  owes: "#FF7A8A",
+  owesSoft: "#3F1D24",
+  primary: "#D7263D",
+  primarySoft: "#3A1519",
+  onPrimary: "#FFFFFF",
+  panel: "#27272C",
+  panelRaised: "#34343A",
+  onPanel: "#F2F2F3",
+  highlight: "#F0475C",
 };
 
 export const themes = { light, dark } as const;

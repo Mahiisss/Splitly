@@ -8,4 +8,4 @@ export * from "./settle";
 export * from "./summary";
 export * from "./forms";
 export * from "./store";
-export * from "./demo";
+export * from "./sample";

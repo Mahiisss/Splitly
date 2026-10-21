@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
-import { demoCurrentUser } from "@splitly/core";
+import { currentUser } from "@splitly/core";
 import { avatarColors, initials } from "@splitly/theme";
 import { useTheme } from "@/lib/theme";
 import { Logo } from "./Logo";
@@ -28,13 +28,13 @@ export function SiteHeader() {
           {theme === "dark" ? <Sun size={18} aria-hidden /> : <Moon size={18} aria-hidden />}
         </button>
         <span className="flex items-center gap-2 text-sm text-muted">
-          <span className="hidden sm:inline">{demoCurrentUser.name}</span>
+          <span className="hidden sm:inline">{currentUser.name}</span>
           <span
             aria-hidden
             className="inline-flex size-7 items-center justify-center rounded-full text-[11px] font-semibold"
             style={{ backgroundColor: you.background, color: you.text }}
           >
-            {initials(demoCurrentUser.name)}
+            {initials(currentUser.name)}
           </span>
         </span>
       </div>
