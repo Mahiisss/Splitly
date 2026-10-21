@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <a href="https://splitly-sage-ten.vercel.app"><b>Open the live app →</b></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/Mahiisss/Splitly/actions/workflows/ci.yml"><img src="https://github.com/Mahiisss/Splitly/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
   <img src="https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white" alt="TypeScript strict" />
   <img src="https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white" alt="Next.js 16" />
@@ -29,6 +33,10 @@
 <p align="center">
   <img src="docs/walkthrough.gif" alt="Adding a ₹3,000 expense to the Goa Trip group, watching the balances update, then marking Aarav's payment as paid" />
 </p>
+
+## Try it
+
+The [live app](https://splitly-sage-ten.vercel.app) opens with two sample groups, **Goa Trip** and **Flat 302**, so you can try everything straight away: add an expense, edit a group, mark a payment as paid, or switch to dark mode. Nothing to sign up for, and your changes are saved in your own browser. **Reset to sample data** on the home page starts over.
 
 ## Highlights
 
@@ -60,8 +68,8 @@
 - **Edit groups:** rename a group, add people who joined late, or remove someone who isn't in any expense yet. People with expenses are protected, so balances never break.
 - **Activity feed:** expenses and payments grouped by day, each showing "you lent" or "you borrowed".
 - **Dark mode** that follows your device, with a toggle on the web and no white flash on load.
-- **Works offline:** data is saved on the device, and saves from older versions are upgraded automatically.
-- **Accessible:** real form labels, full keyboard support, focus-trapped dialogs, and charts described in words for screen readers.
+- **No account needed:** groups are saved on your device, and the mobile app works without an internet connection. Saves from older versions are upgraded automatically.
+- **Accessible:** real form labels, full keyboard support, dialogs that keep focus inside them, and a balance chart that screen readers read as names and amounts.
 
 ## Screenshots
 
@@ -88,7 +96,7 @@
 | Shared logic | TypeScript (strict), in its own package |
 | Database | Supabase: Postgres with Row Level Security and RPC functions |
 | Testing | Vitest, PGlite (Postgres in WebAssembly), Playwright |
-| Tooling | npm workspaces, Turborepo, ESLint, GitHub Actions, EAS Build |
+| Tooling | npm workspaces, Turborepo, ESLint, GitHub Actions, Vercel, EAS Build |
 
 ## Architecture
 
@@ -111,13 +119,13 @@ flowchart LR
 ```
 
 ```
-splitly/
+Splitly/
 ├── apps/
 │   ├── web/          Next.js app: / (your groups) and /groups/[id]
 │   │   └── e2e/      Playwright tests that click through the app
 │   └── mobile/       Expo app: the same screens with Expo Router
 ├── packages/
-│   ├── core/         Business logic and its tests: the heart of the app
+│   ├── core/         Business logic and its tests
 │   └── theme/        Light and dark design tokens shared by both apps
 ├── supabase/
 │   ├── migrations/   Postgres schema, Row Level Security, RPC functions
@@ -196,13 +204,15 @@ Every table has **Row Level Security**, so the database itself refuses to show a
 
 GitHub Actions runs all three on every push, along with type checks, lint and a production build.
 
-The browser tests have already paid for themselves. Running them at phone size showed that the group page was wider than a 360px screen and covered the delete buttons. Running each one 15 times caught a race where Next.js sometimes reset the tab title after the page had set it.
+The browser tests found two real bugs. At phone size, the group page was wider than a 360px screen and covered the delete buttons. Repeating each test 15 times exposed a race where Next.js sometimes reset the tab title after the page had set it.
 
 ## Getting started
 
 You need **Node.js 22 or newer** (`node -v` to check).
 
 ```bash
+git clone https://github.com/Mahiisss/Splitly.git
+cd Splitly
 npm install          # installs every app and package
 npm test             # logic tests and database security checks
 npm run dev:web      # web app at http://localhost:3000
@@ -217,17 +227,15 @@ npm run dev:mobile   # mobile app: scan the QR code with Expo Go
 | `npm run test:e2e` | Builds the web app and runs the browser tests. The first time, run `npx playwright install chromium`, or on Windows skip the download and use Edge: `$env:PLAYWRIGHT_CHANNEL="msedge"; npm run test:e2e` |
 | `npm test --workspace=@splitly/core -- --watch` | Re-runs the logic tests as you edit |
 
-## Deploy
+## Deployment
 
-**Web app on Vercel**
+**Web app:** live at [splitly-sage-ten.vercel.app](https://splitly-sage-ten.vercel.app), and every push to `main` redeploys it. To host your own copy on [Vercel](https://vercel.com):
 
-1. On [vercel.com](https://vercel.com), choose **Add New → Project** and import this repository.
-2. Set **Root Directory** to `apps/web`. Vercel detects Next.js and installs the workspace from the repository root.
+1. Choose **Add New → Project** and import the repository.
+2. Set **Root Directory** to `apps/web`. Vercel detects Next.js and the npm workspace from the lockfile at the repository root.
 3. Deploy.
 
-**Android app (APK)**
-
-The APK is built in the cloud by Expo's EAS Build, so Android Studio isn't needed. With a free [Expo account](https://expo.dev/signup):
+**Android app (APK):** built in the cloud by Expo's EAS Build, so Android Studio isn't needed. With a free [Expo account](https://expo.dev/signup):
 
 ```bash
 cd apps/mobile
@@ -239,5 +247,5 @@ The first time, answer **Yes** when it offers to create the EAS project and gene
 
 ## Author
 
-**Mahi Soni**, React and React Native developer
+**Mahi Soni**, React and React Native developer<br />
 [GitHub](https://github.com/Mahiisss) · [LinkedIn](https://www.linkedin.com/in/mahisoni45)
