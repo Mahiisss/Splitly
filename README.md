@@ -37,7 +37,7 @@
 | **2 apps, 1 codebase** | The web and mobile apps share their logic, validation, state and design tokens, so they always agree to the last paisa |
 | **Exact money** | Every amount is a whole number of paise and every split adds up exactly, with no floating-point drift |
 | **Fewest payments** | Settle-up turns any set of balances into a short list of who pays whom: never more than *n − 1* payments |
-| **3 layers of tests** | 115 unit tests, 24 database security checks and 11 browser tests at desktop and phone sizes, all run on every push |
+| **3 layers of tests** | 115 unit tests, 24 database security checks, and browser tests on a desktop (11) and a phone screen (10), all run on every push |
 
 ## Features
 
@@ -192,7 +192,7 @@ Every table has **Row Level Security**, so the database itself refuses to show a
 | --- | --- | --- | --- |
 | Logic | Vitest | 115 tests: splits, balances, settle-up (including 1,000 random groups), forms, saving and loading | `npm test` |
 | Database | PGlite | 24 checks against the real migration, such as "an outsider sees no expenses" and "a split that doesn't add up is rejected" | `npm test` |
-| End to end | Playwright | 11 flows at desktop and phone sizes: add, edit and delete with undo, mark as paid, share, edit groups, dark mode, tab titles. A test also fails if the page logs any error | `npm run test:e2e` |
+| End to end | Playwright | 11 flows on desktop and 10 on a phone screen (Share is desktop-only, because phones open the share sheet): add, edit and delete with undo, mark as paid, share, edit groups, dark mode, tab titles. A test also fails if the page logs any error | `npm run test:e2e` |
 
 GitHub Actions runs all three on every push, along with type checks, lint and a production build.
 
