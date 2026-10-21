@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+dist/
+web-build/
+.expo/
+expo-env.d.ts
+
+# turbo
+.turbo/
+
+# env files (never commit real keys)
+.env
+.env*.local
+
+# misc
+*.tsbuildinfo
+.DS_Store
+npm-debug.log*
+coverage/
+
+# generated native folders (Expo CNG)
+apps/mobile/ios/
+apps/mobile/android/

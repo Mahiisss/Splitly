@@ -1,0 +1,34 @@
+name: Keep Supabase awake
+
+# Supabase pauses free projects after 1 week without activity.
+# This makes one tiny read every 3 days so the live demo never goes to sleep.
+#
+# Needs two repository secrets (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL       e.g. https://abcd.supabase.co
+#   SUPABASE_ANON_KEY  the anon / publishable key (never the service_role key)
+
+on:
+  schedule:
+    - cron: "17 6 */3 * *" # 06:17 UTC (11:47 IST) every 3 days; off the busy top of the hour
+  workflow_dispatch: # adds a "Run workflow" button so you can test it
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read one row from the database
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "Add the SUPABASE_URL and SUPABASE_ANON_KEY repository secrets first."
+            exit 1
+          fi
+          # Row Level Security returns no rows to anonymous visitors, but the
+          # request still reaches Postgres, which is what counts as activity.
+          curl --silent --show-error --fail-with-body --max-time 30 \
+            "$SUPABASE_URL/rest/v1/groups?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY"
+          echo
+          echo "Supabase answered. It stays awake for another week."

@@ -1,0 +1,33 @@
+{
+  "name": "splitly",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Split shared expenses with friends — one codebase for web (Next.js) and mobile (Expo).",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "supabase"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:web": "npm run dev --workspace=@splitly/web",
+    "dev:mobile": "npm run start --workspace=@splitly/mobile",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:e2e": "turbo run build --filter=@splitly/web && npm run test:e2e --workspace=@splitly/web",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.7",
+    "typescript": "~6.0.3"
+  },
+  "overrides": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "npm@10.9.4"
+}

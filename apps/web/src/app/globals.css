@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/*
+ * Colours come from @splitly/theme: layout.tsx injects themeCss(), which
+ * defines --splitly-* variables for light and dark mode. These lines turn
+ * them into Tailwind classes such as bg-canvas, text-ink and text-owed.
+ */
+@theme inline {
+  --color-canvas: var(--splitly-canvas);
+  --color-surface: var(--splitly-surface);
+  --color-ink: var(--splitly-ink);
+  --color-muted: var(--splitly-muted);
+  --color-line: var(--splitly-line);
+  --color-owed: var(--splitly-owed);
+  --color-owed-soft: var(--splitly-owedSoft);
+  --color-owes: var(--splitly-owes);
+  --color-owes-soft: var(--splitly-owesSoft);
+  --color-marigold: var(--splitly-marigold);
+  --color-marigold-soft: var(--splitly-marigoldSoft);
+  --color-on-marigold: var(--splitly-onMarigold);
+  --color-panel: var(--splitly-panel);
+  --color-panel-raised: var(--splitly-panelRaised);
+  --color-on-panel: var(--splitly-onPanel);
+  --font-sans: var(--font-geist-sans);
+  --font-display: "Bricolage Grotesque Variable", var(--font-geist-sans);
+}
+
+body {
+  background: var(--splitly-canvas);
+  color: var(--splitly-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The balance bars grow out from the zero line once, when the page loads. */
+@keyframes grow-from-zero {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.bar-grow {
+  animation: grow-from-zero 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Placeholder blocks shown while saved data loads. */
+@keyframes shimmer {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.skeleton {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: var(--splitly-line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-grow,
+  .skeleton {
+    animation: none;
+  }
+}
